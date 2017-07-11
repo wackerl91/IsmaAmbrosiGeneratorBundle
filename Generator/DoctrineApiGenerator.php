@@ -134,10 +134,6 @@ class DoctrineApiGenerator extends Generator
      */
     private function generateConfiguration()
     {
-        if (!in_array($this->format, array('yml', 'xml', 'php'))) {
-            return;
-        }
-
         $target = sprintf(
             '%s/Resources/config/api/routing/%s.%s',
             $this->bundle->getPath(),
@@ -145,7 +141,7 @@ class DoctrineApiGenerator extends Generator
             $this->format
         );
 
-        $this->renderFile('config/routing.'.$this->format.'.twig', $target, array(
+        $this->renderFile('config/routing.yml.twig', $target, array(
             'actions' => $this->actions,
             'route_prefix' => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,

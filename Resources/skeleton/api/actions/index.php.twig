@@ -6,7 +6,7 @@
      */
     public function indexAction()
     {
-        $documents = $this->getDocumentManager->getRepository('{{ bundle }}:{{ document }}')->findAll();
+        $documents = $this->getDocumentManager()->getRepository('{{ bundle }}:{{ document }}')->findAll();
 
         return $this->view($documents, Response::HTTP_OK);
     }

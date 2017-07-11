@@ -18,9 +18,9 @@
             $dm->flush();
 
             $view = $this->view($document, Response::HTTP_CREATED);
-            $view->setLocation($this->generateUrl('{{ route_prefix }}'_get', [
-                'id' => $document->getId();
-            ]
+            $view->setLocation($this->generateUrl('{{ route_prefix }}_get', [
+                'id' => $document->getId()
+            ], true));
         }
 
         return $this->view($form, Response::HTTP_BAD_REQUEST);
