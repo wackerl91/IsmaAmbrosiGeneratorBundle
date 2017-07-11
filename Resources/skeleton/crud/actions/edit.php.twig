@@ -27,7 +27,7 @@
             throw $this->createNotFoundException('Unable to find {{ document }} document.');
         }
 
-        $editForm = $this->createForm(new {{ document_class }}Type(), $document);
+        $editForm = $this->createForm('{{ namespace }}\Document\{{ document }}', $document);
         $deleteForm = $this->createDeleteForm($id);
 
 {% if 'annotation' == format %}

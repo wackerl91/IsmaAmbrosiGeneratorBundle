@@ -14,7 +14,7 @@
     public function newAction()
     {
         $document = new {{ document_class }}();
-        $form = $this->createForm(new {{ document_class }}Type(), $document);
+        $form = $this->createForm('{{ namespace }}\Document\{{ document }}', $document);
 
 {% if 'annotation' == format %}
         return array(

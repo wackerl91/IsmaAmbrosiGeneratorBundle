@@ -31,8 +31,8 @@
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm   = $this->createForm(new {{ document_class }}Type(), $document);
-        $editForm->bind($request);
+        $editForm   = $this->createForm('{{ namespace }}\Document\{{ document }}', $document);
+        $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $dm->persist($document);
