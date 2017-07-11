@@ -1,4 +1,4 @@
 {{ base_name }}:
-    resource: "{{ bundle }}:{{ document }}"
+    resource: "@{{ namespace }}/Controller/API{{ controller_namespace ? '//' ~ controller_namespace : '' }}/{{ document_class }}Controller.php"
     type: rest
     prefix: /{{ route_prefix }}
