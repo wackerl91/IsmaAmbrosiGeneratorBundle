@@ -140,6 +140,11 @@ class DoctrineApiGenerator extends Generator
             strtolower(str_replace('\\', '_', $this->document))
         );
 
+        $parts = explode('\\', $this->document);
+        $class = array_pop($parts);
+
+        $namespace = implode('\\', $parts);
+
         $this->renderFile('config/routing.yml.twig', $target, array(
             'actions' => $this->actions,
             'route_prefix' => $this->routePrefix,
@@ -147,6 +152,9 @@ class DoctrineApiGenerator extends Generator
             'base_name' => $this->baseName,
             'bundle' => $this->bundle->getName(),
             'document' => $this->document,
+            'namespace' => $this->bundle->getNamespace(),
+            'controller_namespace' => $namespace,
+            'document_class' => $class,
         ));
     }
 
