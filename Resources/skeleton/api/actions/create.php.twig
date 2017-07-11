@@ -1,0 +1,27 @@
+
+    /**
+     * Creates a new {{ document }} document.
+     *
+     * @param Request $request
+     *
+     * @return \FOS\RestBundle\View\View|\Symfony\Component\Form\Form
+     */
+    public function postAction(Request $request)
+    {
+        $document = new {{ document_class }}();
+        $form     = $this->createForm('{{ namespace }}\Document\{{ document }}', $document);
+        $form->submit($request->request->all());
+
+        if ($form->isValid()) {
+            $dm = $this->getDocumentManager();
+            $dm->persist($document);
+            $dm->flush();
+
+            $view = $this->view($document, Response::HTTP_CREATED);
+            $view->setLocation($this->generateUrl('{{ route_prefix }}'_get', [
+                'id' => $document->getId();
+            ]
+        }
+
+        return $this->view($form, Response::HTTP_BAD_REQUEST);
+    }

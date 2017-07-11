@@ -1,0 +1,31 @@
+
+    /**
+     * Updates an existing {{ document }} document.
+     *
+     * @param Request $request
+     * @param         $id
+     *
+     * @REST\Route(requirements={"id"="[a-zA-Z0-9]{24}"})
+     *
+     * @return \FOS\RestBundle\View\View|\Symfony\Component\Form\Form
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If document doesn't exists
+     */
+    public function patchAction(Request $request, $id)
+    {
+        $document = $this->load($id);
+
+        $form = $this->createForm('{{ namespace }}\Document\{{ document }}', $document);
+        $form->submit($request->request->all());
+
+        if ($form->isValid()) {
+            $dm = $this->getDocumentManager();
+            $dm->flush();
+
+            $view = $this->view($document, Response::HTTP_OK);
+
+            return $view;
+        }
+
+        return $this->view($form, Response::HTTP_BAD_REQUEST);
+    }

@@ -1,0 +1,15 @@
+
+    /**
+     * Finds and displays a {{ document }} document.
+     * @REST\Route(requirements={"event"="[a-zA-Z0-9]{24}"})
+     *
+     * @return \FOS\RestBundle\View\View
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If document doesn't exists
+     */
+    public function getAction($id)
+    {
+        $document = $this->load($id);
+
+        return $this->view($document, Response::HTTP_OK);
+    }
