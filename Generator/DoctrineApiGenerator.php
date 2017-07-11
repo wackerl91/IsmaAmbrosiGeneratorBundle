@@ -135,10 +135,9 @@ class DoctrineApiGenerator extends Generator
     private function generateConfiguration()
     {
         $target = sprintf(
-            '%s/Resources/config/api/routing/%s.%s',
+            '%s/Resources/config/api/%s_routing.yml',
             $this->bundle->getPath(),
-            strtolower(str_replace('\\', '_', $this->document)),
-            $this->format
+            strtolower(str_replace('\\', '_', $this->document))
         );
 
         $this->renderFile('config/routing.yml.twig', $target, array(

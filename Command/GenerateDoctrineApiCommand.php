@@ -28,6 +28,7 @@ class GenerateDoctrineApiCommand extends GenerateDoctrineCrudCommand
             ->setDefinition([
                 new InputOption('document', '', InputOption::VALUE_REQUIRED, 'The document class name to initialize (shortcut notation)'),
                 new InputOption('route-prefix', '', InputOption::VALUE_REQUIRED, 'The route prefix'),
+                new InputOption('route-basename', '', InputOption::VALUE_REQUIRED, 'The route basename'),
                 new InputOption('controller-name', '', InputOption::VALUE_REQUIRED, 'The controller name'),
                 new InputOption('with-write', '', InputOption::VALUE_NONE, 'Whether or not to generate create, new and delete actions'),
                 new InputOption('format', '', InputOption::VALUE_REQUIRED, 'Use the format for configuration files (php, xml, yml, or annotation)', 'annotation'),
